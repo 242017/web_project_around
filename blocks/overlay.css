@@ -4,11 +4,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Oscurece el fondo */
-  display: none; /* Se oculta por defecto */
-  z-index: 5; /* Debe estar detrás del popup pero sobre el contenido */
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 5;
 }
 
 .overlay_active {
-  display: block; /* Se muestra cuando el popup está abierto */
+  display: block;
 }
