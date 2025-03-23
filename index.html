@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alrededor del mundo</title>
+    <meta name="description" content="Galeria de arte alrededor del mundo" />
+    <meta name="keywords" content="html, css, javascript" />
+    <meta name="author" content="Nicolás Ibagué" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="preconnect" href="./vendor/fonts.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div>
+          <img
+            src="./images/Vector.png"
+            alt="Logotipo Around"
+            class="header__logo"
+          />
+          <div>
+            <img src="./images/Line.png" alt="Linea" class="header__line" />
+          </div>
+        </div>
+      </header>
+      <main class="content">
+        <section class="profile">
+          <div class="profile__info">
+            <img
+              src="./images/f7cbc626-87df-4ad3-9c2f-7b3709b0fbb3.jpg"
+              alt="Nicolás Ibagué"
+              class="profile__infoavatar"
+            />
+            <div class="profile__name">
+              <h1 class="profile__namenames">Nicolás Ibagué</h1>
+              <img
+                src="./images/EditButton.png"
+                alt="editar boton"
+                class="profile__nameeditbutton"
+              />
+              <p class="profile__namesubname">Explorador</p>
+            </div>
+            <img
+              src="./images/AddButton.png"
+              alt="boton de signo mas"
+              class="profile__infoaddbutton"
+            />
+          </div>
+        </section>
+        <section class="element">
+          <div class="element__card">
+            <img
+              src="./images/Valledeyosemite.jpg"
+              alt="Valle de yosemite"
+              class="element__cardimage"
+            />
+            <div class="element__content">
+              <p class="element__contentparagraph">Valle de Yosemite</p>
+              <button type="button" class="element__contentbutton">
+                <img
+                  src="./images/Group.svg"
+                  alt="like"
+                  class="element__contentlike"
+                />
+              </button>
+            </div>
+          </div>
+          <div class="element__card">
+            <img
+              src="./images/LagoLouis.png"
+              alt="Lago Louis"
+              class="element__cardimage"
+            />
+            <div class="element__content">
+              <p class="element__contentparagraph">Lago Louise</p>
+              <button type="button" class="element__contentbutton">
+                <img
+                  src="./images/Group.svg"
+                  alt="like"
+                  class="element__contentlike"
+                />
+              </button>
+            </div>
+          </div>
+          <div class="element__card">
+            <img
+              src="./images/MontañasCalvas.png"
+              alt="Montañas Calvas"
+              class="element__cardimage"
+            />
+            <div class="element__content">
+              <p class="element__contentparagraph">Montañas Calvas</p>
+              <button type="button" class="element__contentbutton">
+                <img
+                  src="./images/Group.svg"
+                  alt="like"
+                  class="element__contentlike"
+                />
+              </button>
+            </div>
+          </div>
+          <div class="element__card">
+            <img
+              src="./images/Latemar.png"
+              alt="Latemar"
+              class="element__cardimage"
+            />
+            <div class="element__content">
+              <p class="element__contentparagraph">Latemar</p>
+              <button type="button" class="element__contentbutton">
+                <img
+                  src="./images/Group.svg"
+                  alt="like"
+                  class="element__contentlike"
+                />
+              </button>
+            </div>
+          </div>
+          <div class="element__card">
+            <img
+              src="./images/VanoisNational.png"
+              alt="Vanois National"
+              class="element__cardimage"
+            />
+            <div class="element__content">
+              <p
+                class="element__contentparagraph element__contentparagraph_textoverflow"
+              >
+                Vanois National Park
+              </p>
+              <button type="button" class="element__contentbutton">
+                <img
+                  src="./images/Group.svg"
+                  alt="like"
+                  class="element__contentlike"
+                />
+              </button>
+            </div>
+          </div>
+          <div class="element__card">
+            <img
+              src="./images/LagodiBraies.png"
+              alt="Lago di Braies"
+              class="element__cardimage"
+            />
+            <div class="element__content">
+              <p class="element__contentparagraph">Lago di Braies</p>
+              <button type="button" class="element__contentbutton">
+                <img
+                  src="./images/Group.svg"
+                  alt="like"
+                  class="element__contentlike"
+                />
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2025 Nicolás Ibagué</p>
+      </footer>
+      <div id="popup" class="popup popup_invisible">
+        <form action="#" class="popup__container">
+          <button id="popupclose" type="button" class="popup__close">x</button>
+          <h2 class="popup__title">Editar perfil</h2>
+          <fieldset class="popup__fieldset">
+            <label id="labelname" class="popup__label"></label>
+            <input
+              type="text"
+              class="popup__input"
+              id="name"
+              placeholder="Nombre"
+              required
+            />
+            <label id="labelsubname" class="popup__label"></label>
+            <input
+              type="text"
+              class="popup__input"
+              id="subname"
+              placeholder="Acerca de mi"
+              required
+            />
+            <button type="submit" class="popup__button">Guardar</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>
