@@ -1,48 +1,24 @@
-Web Project Homeland
+Web_Project_Around
 
-Descripción del Proyecto
-
-Web Project Homeland es una página web diseñada para proporcionar información sobre un hogar ideal y su entorno. La página incluye funcionalidades como:
-
-Una sección de presentación con información clave.
-
-Galería de imágenes representativas del proyecto.
-
-Un formulario de contacto para consultas.
-
-Información de redes sociales y ubicación.
-
-Un diseño responsivo y accesible para mejorar la experiencia del usuario.
+Descripción
+Este proyecto es un sitio web interactivo donde los usuarios pueden agregar, eliminar y dar "me gusta" a fotos. Implementa HTML, CSS (BEM), JavaScript y Git para el control de versiones.
 
 Tecnologías Utilizadas
+HTML5 & CSS3 (BEM) para estructura y estilos organizados.
+JavaScript (ES6+) para interactividad y funcionalidades dinámicas.
+Git & GitHub para control de versiones y despliegue en GitHub Pages.
+Normalize.css para compatibilidad entre navegadores.
 
-HTML5: Para la estructura del contenido.
+Funcionalidades
+Añadir y eliminar imágenes de una galería.
+Dar "me gusta" a las imágenes.
+Diseño responsivo para diferentes dispositivos.
 
-CSS3 (Metodología BEM): Para los estilos y diseño modular.
+🚀 Proyecto en Vivo
+🔗 Ver Proyecto en GitHub Pages
 
-Normalize.css: Para asegurar la coherencia de estilos en diferentes navegadores.
+Git page:
+https://242017.github.io/web_project_around/
 
-Google Fonts: Para una mejor tipografía y presentación visual.
-
-Imágenes y SVG: Para una interfaz visual atractiva.
-
-Planes de Mejora
-
-Durante el desarrollo de este proyecto, surgieron algunas ideas de mejora que podrían implementarse en el futuro:
-
-Mejorar la adaptabilidad: Optimizar el diseño para una experiencia más fluida en dispositivos móviles.
-
-Agregar un mapa interactivo: Incluir una API de mapas para mostrar ubicaciones importantes.
-
-Implementar animaciones CSS: Añadir transiciones suaves para mejorar la experiencia del usuario.
-
-Modo Oscuro: Ofrecer una opción para cambiar entre modo claro y oscuro.
-
-Optimización de accesibilidad: Implementar mejoras para facilitar la navegación con teclado y lectores de pantalla.
-
-Enlace de GITHUB:
-https://242017.github.io/web_project_homeland/
-
-Créditos
-Autor: Nicolás Ibagué
-Año: 2025
+Autor
+Nicolás Ibagué
