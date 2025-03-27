@@ -15,27 +15,27 @@ const title = document.querySelector(".popup__subtitle");
 const initialCards = [
   {
     name: "Valle de Yosemite",
-    link: "./images/valle-yosemite.jpg",
+    link: "./images/Valledeyosemite.jpg",
   },
   {
     name: "Lago Louise",
-    link: "./images/lago-louise.png",
+    link: "./images/LagoLouis.png",
   },
   {
     name: "Montañas Calvas",
-    link: "./images/montañas-calvas.png",
+    link: "./images/MontañasCalvas.png",
   },
   {
     name: "Latemar",
-    link: "./images/latemar.png",
+    link: "./images/Latemar.png",
   },
   {
     name: "Vanois National Park",
-    link: "./images/vanois-national-park.png",
+    link: "./images/VanoisNational.png",
   },
   {
     name: "Lago di Braies",
-    link: "./images/lago-braies.png",
+    link: "./images/LagodiBraies.png",
   },
 ];
 
@@ -88,7 +88,7 @@ form.addEventListener("submit", saveChangeEdit);
 
 function cardsInitials() {
   initialCards.forEach((item) => {
-    const cardTemplate = document.querySelector("#main__template").content;
+    const cardTemplate = document.querySelector("#template__gallery").content;
     const cardElement = cardTemplate
       .querySelector(".main__gallery-card")
       .cloneNode(true);
