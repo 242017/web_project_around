@@ -117,7 +117,7 @@ function cardsInitials() {
 cardsInitials();
 
 function cardsAdd(titleValue, linkValue) {
-  const cardTemplate = document.querySelector("#main__template").content;
+  const cardTemplate = document.querySelector("#template__gallery").content;
   const cardElement = cardTemplate
     .querySelector(".main__gallery-card")
     .cloneNode(true);
@@ -147,7 +147,8 @@ function validarCampos() {
   popButAdd.disabled = !(inpName.value && inpAbout.value);
 }
 
-popButAdd.addEventListener("click", function () {
+popButAdd.addEventListener("click", function (e) {
+  e.preventDefault();
   cardsAdd(inpName.value, inpAbout.value);
   close();
 });
