@@ -38,12 +38,12 @@
 .popup__container {
   margin: auto;
   max-width: 430px;
-  background-color: #fff;
   border-radius: 10px;
 }
 
 .popup__images {
   margin: 190px auto 0;
+  background-color: none;
 }
 
 .popup__content-image {
