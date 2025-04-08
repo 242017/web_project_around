@@ -1,8 +1,10 @@
+import Api from "../components/Api.js";
 import Card from "../components/Card.js";
 import FormCard from "../components/FormCard.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithImage from "../components/PopupWithImage.js";
-import { PopupWithForm } from "../components/PopupWithForm.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import Popup from "../components/Popup.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
@@ -11,25 +13,52 @@ import {
   popimag,
   poptxt,
   gallery,
-  initialCards,
   validationConfig,
   formElements,
   formValidators,
   paragName,
   paragAbout,
+  profImg,
   saveChangeEdit,
   saveCard,
   edClass,
   addClass,
   butEdit,
   butAdd,
+  butImg,
+  saveImgProfile,
+  imgClass,
   openEditAdd,
+  inpTitle,
+  inpUrl,
+  inpName,
+  inpAbout,
+  inpImg,
+  popButAdd,
+  popButEdit,
+  popButImg,
 } from "../constants/utils.js";
 
-export const popupFormEdit = new PopupWithForm(popup, edClass, saveChangeEdit);
+export const api = new Api({
+  baseUrl: "https://around-api.es.tripleten-services.com/v1",
+  headers: {
+    authorization: "88a52ede-db16-4fc6-b30e-8a0ccb8a09af",
+  },
+});
+
+export const popupFormEdit = new PopupWithForm(popup, edClass, () => {
+  saveChangeEdit(inpName.value, inpAbout.value);
+});
 popupFormEdit.setEventListeners();
-export const popupFormAdd = new PopupWithForm(popup, addClass, saveCard);
+export const popupFormAdd = new PopupWithForm(popup, addClass, () => {
+  saveCard(inpTitle.value, inpUrl.value);
+});
 popupFormAdd.setEventListeners();
+export const popupFormimg = new PopupWithForm(popup, imgClass, () => {
+  saveImgProfile(inpImg.value);
+});
+popupFormimg.setEventListeners();
+export const popupFormTrash = new PopupWithConfirmation(popup);
 
 export const openPop = new Popup(popup);
 openPop.setEventListeners();
@@ -40,35 +69,90 @@ popupImage.setEventListeners();
 export const usInfo = new UserInfo({
   nameSelector: paragName,
   jobSelector: paragAbout,
+  avatarSelector: profImg,
 });
 
-const sectionCard = new Section(
-  {
-    item: initialCards,
-    renderer: (item) => {
-      const card = new Card(item, "#main__template", popupImage);
-      const cardElement = card.getCreateCard();
-      sectionCard.addItem(cardElement);
-    },
-  },
-  gallery
-);
-sectionCard.renderer();
+api
+  .getUserInfoAndCards()
+  .then(({ userInfo, cards }) => {
+    usInfo.setUserInfo({ name: userInfo.name, job: userInfo.about });
+    usInfo.setAvatar({ avatar: userInfo.avatar });
 
-const formCardsAdd = (titleValue, linkValue, cardSelector) => {
-  const sectionInstance = new Section(
+    const sectionCard = new Section(
+      {
+        item: cards,
+        renderer: (item) => {
+          const card = new Card(
+            item,
+            "#main__template",
+            popupImage,
+            popupFormTrash,
+            api
+          );
+          const cardElement = card.getCreateCard();
+          sectionCard.addItem(cardElement);
+        },
+      },
+      gallery
+    );
+    sectionCard.renderer();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+export const formCardsAdd = (titleValue, linkValue, cardSelector) => {
+  const sectionFormCard = new Section(
     {
       items: [],
       renderer: (data) => {
-        const formCard = new FormCard(cardSelector, popupImage);
-        formCard.handleCreateCard(data.link, data.title);
+        const formCard = new FormCard(
+          cardSelector,
+          popupImage,
+          popupFormTrash,
+          api
+        );
+        formCard.handleCreateCard(data.link, data.name, data._id);
         return formCard.getCreateCard();
       },
     },
     gallery
   );
-  const cardData = { link: linkValue, title: titleValue };
-  sectionInstance.addItem(sectionInstance._renderer(cardData));
+  const cardData = { name: titleValue, link: linkValue };
+  api
+    .addCard(cardData)
+    .then((res) => {
+      popButAdd.textContent = "Guardando...";
+      sectionFormCard.addItem(sectionFormCard._renderer(res));
+    })
+    .catch((err) => {
+      popButAdd.textContent = err;
+    });
+};
+
+export const formInfoEdit = (nameValue, aboutValue) => {
+  api
+    .setUserInfo(nameValue, aboutValue)
+    .then((data) => {
+      console.log(data);
+      popButEdit.textContent = "Guardando...";
+      usInfo.setUserInfo({ name: data.name, job: data.about });
+    })
+    .catch((err) => {
+      popButEdit.textContent = err;
+    });
+};
+
+export const formImgProfile = (avatarValue) => {
+  api
+    .updateAvatar({ avatar: avatarValue })
+    .then((data) => {
+      popButImg.textContent = "Guardando...";
+      usInfo.setAvatar({ avatar: data.avatar });
+    })
+    .catch((err) => {
+      popButImg.textContent = err;
+    });
 };
 
 formElements.forEach((formElement) => {
@@ -79,13 +163,14 @@ formElements.forEach((formElement) => {
 
 butEdit.addEventListener("click", (e) => openEditAdd(e, openPop));
 butAdd.addEventListener("click", (e) => openEditAdd(e, openPop));
+butImg.addEventListener("click", (e) => openEditAdd(e, openPop));
 document.addEventListener("keydown", (e) => {
   const formList = e.target.classList;
   if (e.key === "Enter" && formList.contains("form-edit")) {
     saveChangeEdit();
   } else if (e.key === "Enter" && formList.contains("form-add")) {
     saveCard();
+  } else if (e.key === "Enter" && formList.contains("form-img")) {
+    saveImgProfile();
   }
 });
-
-export { formCardsAdd as add };
